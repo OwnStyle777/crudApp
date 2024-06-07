@@ -16,7 +16,7 @@
 
 
     <dependencies>
-        <!-- Java EE API -->
+        <!-- Java EE -->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
@@ -30,6 +30,20 @@
             <artifactId>payara-embedded-all</artifactId>
             <version>5.2021.2</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- PostgreSQL -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.23</version>
+        </dependency>
+
+        <!-- Hibernate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.30.Final</version>
         </dependency>
     </dependencies>
 
