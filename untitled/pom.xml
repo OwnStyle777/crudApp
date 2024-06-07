@@ -47,4 +47,40 @@
         </dependency>
     </dependencies>
 
+
+    <build>
+
+    <plugins>
+        <!-- Payara Micro Maven plugin -->
+        <plugin>
+            <groupId>fish.payara.maven.plugins</groupId>
+            <artifactId>payara-micro-maven-plugin</artifactId>
+            <version>1.0.0</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>bundle</goal>
+                        <goal>start</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <useUberJar>true</useUberJar>
+                <payaraMicroAbsolutePath>C:\Users\DELL\.m2\repository\fish\payara\extras\payara-micro\5.2021.2\payara-micro-5.2021.2.jar</payaraMicroAbsolutePath>
+                <payaraVersion>5.2021.2</payaraVersion>
+                <daemon>true</daemon>
+                <javaPath>C:\Program Files\Java\jdk-21\bin\java</javaPath>
+                <deployWar>true</deployWar>
+                <commandLineOptions>
+                    <option>
+                        <key>--autoBindHttp</key>
+                        <value>true</value>
+                    </option>
+                </commandLineOptions>
+            </configuration>
+        </plugin>
+    </plugins>
+    </build>
+
+
 </project>
