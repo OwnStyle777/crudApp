@@ -40,9 +40,36 @@ public class CrudResource {
         return Response.status(Response.Status.BAD_REQUEST).entity("Student is null").build();
     }
 
+    @DELETE
+    @Path("students/delete/{id}")
+    public Response deleteStudent(@PathParam("id")long id){
+        Student student = studentDAO.findById(id);
+
+        if(student != null){
+            studentDAO.delete(student);
+        }
+        return Response.status(Response.Status.BAD_REQUEST).entity("Student is null").build();
+    }
+
+    @PUT
+    @Path("students/update/{id}")
+    public Response updateStudent(@PathParam("id") Long id, Student student){
+    Student updateStudent = studentDAO.findById(id);
 
 
+    if(updateStudent != null) {
+        updateStudent.setAge(student.getAge());
+        updateStudent.setEmail(student.getEmail());
+        updateStudent.setFieldOfStudy(student.getFieldOfStudy());
+        updateStudent.setName(student.getName());
+
+        studentDAO.update(updateStudent);
+        return Response.ok("Student was successfully updated").build();
+    }
+        return Response.status(Response.Status.BAD_REQUEST).entity("Student is null").build();
+
+    }
 
 
-
+    
     }
