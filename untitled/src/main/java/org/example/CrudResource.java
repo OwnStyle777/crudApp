@@ -30,8 +30,18 @@ public class CrudResource {
     return Response.status(Response.Status.NOT_FOUND).entity("Student with id " + id + " not found").build();
     }
 
+    @POST
+    @Path("students/add")
+    public Response addStudent(Student student){
+        if(student != null ){
+            studentDAO.create(student);
+            return Response.ok("Student was successfully added").build();
+        }
+        return Response.status(Response.Status.BAD_REQUEST).entity("Student is null").build();
+    }
 
- 
+
+
 
 
 
