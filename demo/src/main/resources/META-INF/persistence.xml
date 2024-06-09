@@ -1,13 +1,15 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
   <persistence-unit name="my-pu">
+    <jta-data-source>jdbc/studentDS</jta-data-source>
     <class>com.example.demo.Student</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/student"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.password" value="1111"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-      <property name="hibernate.dialect.storage_engine" value="innodb"/>
-      <property name="hibernate.hbm2ddl.auto" value="update"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect"/>
+      <property name="hibernate.hbm2ddl.auto" value="validate"/>
+      <property name="hibernate.default_schema" value="public"/>
       <property name="javax.persistence.provider" value="org.hibernate.jpa.HibernatePersistenceProvider"/>
     </properties>
   </persistence-unit>

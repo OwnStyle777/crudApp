@@ -4,7 +4,8 @@ package com.example.demo;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "students")
+@Table(name = "students", schema = "public")
+@PersistenceContext(unitName = "my-pu")
 @NamedQueries({
         @NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s")
 })
