@@ -27,8 +27,9 @@ public class StudentDAO {
     public void delete (Student student){
 
         if (!entityManager.contains(student)) {
-            System.out.println("this student is not in database");
+            student = entityManager.merge(student);
         }
+
         entityManager.remove(student);
     }
 

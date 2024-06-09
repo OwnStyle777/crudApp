@@ -53,6 +53,7 @@ public class CrudResource {
 
         if(student != null){
             studentDAO.delete(student);
+            return Response.ok("Student was successfully deleted").build();
         }
         return Response.status(Response.Status.BAD_REQUEST).entity("Student is null").build();
     }
