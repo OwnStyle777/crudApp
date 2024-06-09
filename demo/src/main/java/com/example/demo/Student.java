@@ -1,20 +1,26 @@
-package org.example;
+package com.example.demo;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "students")
+@NamedQueries({
+        @NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s")
+})
+
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "age")
     private int age;
+    @Column(name = "fieldOfStudy")
     private String fieldOfStudy;
+    @Column(name = "email")
     private String email;
 
     public String getEmail() {
@@ -25,13 +31,6 @@ public class Student {
         this.email = email;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

@@ -1,20 +1,26 @@
-package org.example;
+package com.example.demo;
 
 
 
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("crudApp")
+@RequestScoped
+@Path("/crudApp")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class CrudResource {
 
 @Inject StudentDAO studentDAO;
+
+    @GET
+    @Path("/hello")
+    public String getHello() {
+        return "Hello World!";
+    }
 
 
     @GET
@@ -71,5 +77,5 @@ public class CrudResource {
     }
 
 
-    
+
     }

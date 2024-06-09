@@ -1,4 +1,4 @@
-package org.example;
+package com.example.demo;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
