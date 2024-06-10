@@ -30,7 +30,8 @@ public class CrudResource {
 
     Student student = studentDAO.findById(id);
     if (student != null ){
-        return Response.ok(student).build();
+        StudentDTO studentDTO = StudentDTO.mapToDTO(student);
+        return Response.ok(studentDTO).build();
 
     }
     return Response.status(Response.Status.NOT_FOUND).entity("Student with id " + id + " not found").build();
@@ -38,8 +39,11 @@ public class CrudResource {
 
     @POST
     @Path("students/add")
-    public Response addStudent(Student student){
-        if(student != null ){
+    public Response addStudent(StudentDTO studentDTO){
+
+
+        if(studentDTO != null ){
+            Student student = StudentDTO.mapToEntity(studentDTO);
             studentDAO.create(student);
             return Response.ok("Student was successfully added").build();
         }
@@ -60,9 +64,10 @@ public class CrudResource {
 
     @PUT
     @Path("students/update/{id}")
-    public Response updateStudent(@PathParam("id") Long id, Student student){
-    Student updateStudent = studentDAO.findById(id);
+    public Response updateStudent(@PathParam("id") Long id, StudentDTO studentDTO){
 
+    Student updateStudent = studentDAO.findById(id);
+    Student student = StudentDTO.mapToEntity(studentDTO);
 
     if(updateStudent != null) {
         updateStudent.setAge(student.getAge());
